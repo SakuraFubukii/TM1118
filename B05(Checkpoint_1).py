@@ -1,9 +1,9 @@
 import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
 import time
+from RPLCD.i2c import CharLCD
 import Adafruit_DHT
 import Adafruit_ADS1x15
-import drivers
 import json
 import math
 
@@ -12,7 +12,7 @@ GPIO.setwarnings(False)
 output_channel = [18, 23, 24, 25, 8]
 GPIO.setup(output_channel, GPIO.OUT, initial=GPIO.LOW)
 
-display = drivers.Lcd()
+lcd = CharLCD('PCF8574', 0x27)
 adc= Adafruit_ADS1x15.ADS1115()
 DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
@@ -20,8 +20,10 @@ mqtt_broker = 'broker.hivemq.com'
 mqtt_port = 1883
 mqtt_qos = 1
 GAIN=1
-display.lcd_display_string("TEAM B05 Node", 1)
-display.lcd_display_string("Now Operating!", 2)
+lcd.cursor_pos = (0,0)
+lcd.write_string("TEAM B05 Node")
+lcd.cursor_pos = (1,0)
+lcd.write_string("Now Operating!")
 
 mqtt_topic = 'iot/sensor-B05'
 mqtt_client = mqtt.Client('B05')
