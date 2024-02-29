@@ -1,0 +1,128 @@
+
+
+<!doctype html>
+<HTML>
+    <head>
+        <title>IC2140's Assignment 1</title>
+        <style>
+            table, td, th
+            {
+                border:2px solid black;
+            }
+            th
+            {
+                background-color: black;
+                text-align: left;
+                font-weight: bold;
+                font-family: 'Courier New', Courier, monospace;
+                color:#00ffdd;
+            }
+            tbody
+            {
+                text-align: left;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bold;
+                color:black;
+            }
+            bottom-right-image {
+                position: fixed;
+                bottom: 10px;
+                left: 10px;
+            
+            }
+            button, button::after {
+                width: 150px;
+                height: 50px;
+                background: linear-gradient(30deg,transparent 10%,#ff0037 10% 95%, #00ffdd 95%);
+                border: 0;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 6px 0px 0px #00E6F6;
+                outline: transparent;
+                position: fixed; 
+                bottom: 20px; 
+                right:20px;
+                cursor: pointer;
+		    }
+            button::after {
+                --slice-0: inset(50% 50% 50% 50%);
+                --slice-1: inset(80% -6px 0 0);
+                --slice-2: inset(50% -6px 30% 0);
+                --slice-3: inset(10% -6px 85% 0);
+                --slice-4: inset(40% -6px 43% 0);
+                --slice-5: inset(80% -6px 5% 0);
+                content: 'Go to transfer ';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
+                text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+                clip-path: var(--slice-0);
+            }
+            button:hover::after {
+                animation: 1s glitch;
+                animation-timing-function: steps(2, end);
+            }
+            @keyframes glitch {
+            0% { clip-path: var(--slice-1); transform: translate(-20px, -10px); }
+            10% { clip-path: var(--slice-3); transform: translate(10px, 10px); }
+            20% { clip-path: var(--slice-1); transform: translate(-10px, 10px); }
+            30% { clip-path: var(--slice-3); transform: translate(0px, 5px); }
+            40% { clip-path: var(--slice-2); transform: translate(-5px, 0px); }
+            50% { clip-path: var(--slice-3); transform: translate(5px, 0px); }
+            60% { clip-path: var(--slice-4); transform: translate(5px, 10px); }
+            70% { clip-path: var(--slice-2); transform: translate(-10px, 10px); }
+            80% { clip-path: var(--slice-5); transform: translate(20px, -10px); }
+            90% { clip-path: var(--slice-1); transform: translate(-10px, 0px); }
+            100% { clip-path: var(--slice-1); transform: translate(0); }
+            }
+        </style>
+
+
+    </head>
+    <body style="background-color: #fcee09;">
+        <div id="header" style="background-color:black; position: fixed; top: 0;left: 0;height:100px; width: 100%; border-bottom: 5px solid #ff0141;">
+        <h1 class="display-3 p-4 mb-2 bg-danger text-white" style="font-family: 'MV Boli', Times, serif;
+         color: #fcee09; text-shadow: 5px 5px 5px #00ffdd;text-align: center;display: flex; align-items: center; 
+         justify-content: center;">INFOR PORT</h1></div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Node_ID</th>
+                    <th>Temperature</th>
+                    <th>Hum</th>
+                    <th>Light</th>
+                    <th>Snd</th>
+                </tr>
+            </thead>
+            {% for event in events %}
+            <tr>
+            <td><strong>{{ event.node_id }}</strong></td>
+            <td>{{ event.temp }}</td>
+            <td>{{ event.hum }}</td>
+            <td>{{ event.light }}</td>
+            <td>{{ event.snd }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <br>
+        
+        <a href="https://www.bilibili.com/video/BV1uT4y1P7CX/?spm_id_from=333.337.search-card.all.click">
+            <button>Go to transfer station</button>
+        </a>
+        <div style="position: fixed; bottom: 0; left: 0; margin: 20px;">
+            <img src="https://img2.imgtp.com/2024/02/09/yW45Eljy.png" alt="Image" 
+            style="width: 400px; height: 200px;">
+        </div>
+</HTML>
