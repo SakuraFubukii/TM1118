@@ -79,6 +79,56 @@
             90% { clip-path: var(--slice-1); transform: translate(-10px, 0px); }
             100% { clip-path: var(--slice-1); transform: translate(0); }
             }
+            
+            .top-button1 {
+            position: fixed;
+            top: 120px;
+            left: 10px;
+            z-index: 100;
+            /* Add any additional styling as needed */
+            }
+            .top-button2 {
+            position: fixed;
+            top: 180px;
+            left: 10px;
+            z-index: 10;
+            /* Add any additional styling as needed */
+            }
+            .top-button3 {
+            position: fixed;
+            top: 120px;
+            left: 210px;
+            z-index: 10;
+            /* Add any additional styling as needed */
+            }
+            .top-button4 {
+            position: fixed;
+            top: 180px;
+            left: 210px;
+            z-index: 10;
+            /* Add any additional styling as needed */
+            }
+            .top-button5 {
+            position: fixed;
+            top: 120px;
+            left: 410px;
+            z-index: 10;
+            /* Add any additional styling as needed */
+            }
+            .top-button6 {
+            position: fixed;
+            top: 180px;
+            left: 410px;
+            z-index: 10;
+            /* Add any additional styling as needed */
+            }
+            .top-button7 {
+            position: fixed;
+            top: 120px;
+            left: 610px;
+            z-index: 10;
+            /* Add any additional styling as needed */
+            }
         </style>
 
 
@@ -88,17 +138,30 @@
         <h1 class="display-3 p-4 mb-2 bg-danger text-white" style="font-family: 'MV Boli', Times, serif;
          color: #fcee09; text-shadow: 5px 5px 5px #00ffdd;text-align: center;display: flex; align-items: center; 
          justify-content: center;">INFOR PORT</h1></div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <table style="width: 100%;">
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        
+        
+        
+        <button class="top-button1" onclick="window.location.href = 'http://localhost:8000/iot/W311a/'">W311a</button>        <table style="width: 100%;">
+        <button class="top-button2" onclick="window.location.href = 'http://localhost:8000/iot/W311b/'">W311b</button>        <table style="width: 100%;">
+        <button class="top-button3" onclick="window.location.href = 'http://localhost:8000/iot/W311-H1/'">W311-H1</button>        <table style="width: 100%;">
+        <button class="top-button4" onclick="window.location.href = 'http://localhost:8000/iot/W311-H2/'">W311-H2</button>        <table style="width: 100%;">
+        <button class="top-button5" onclick="window.location.href = 'http://localhost:8000/iot/W311-H3/'">W311-H3</button>        <table style="width: 100%;">
+        <button class="top-button6" onclick="window.location.href = 'http://localhost:8000/iot/W311d-Z1/'">W311d-Z1</button>        <table style="width: 100%;">
+        <button class="top-button7" onclick="window.location.href = 'http://localhost:8000/iot/W311d-Z2/'">W311d-Z2</button>        <table style="width: 100%;">
+            
+            
+            
+            
+            
+            
+            
+            
             <thead>
                 <tr>
                     <th>Node_ID</th>
+                    <th>Location</th>
                     <th>Temperature</th>
                     <th>Hum</th>
                     <th>Light</th>
@@ -107,14 +170,16 @@
             </thead>
             {% for event in events %}
             <tr>
-            <td><strong>{{ event.node_id }}</strong></td>
-            <td>{{ event.temp }}</td>
-            <td>{{ event.hum }}</td>
-            <td>{{ event.light }}</td>
-            <td>{{ event.snd }}</td>
+                <td><strong>{{ event.node_id }}</strong></td>
+                <td>{{ event.loc }}</td>
+                <td>{{ event.temp }}</td>
+                <td>{{ event.hum }}</td>
+                <td>{{ event.light }}</td>
+                <td>{{ event.snd }}</td>
             </tr>
             {% endfor %}
         </table>
+
         <br>
         <br>
         
