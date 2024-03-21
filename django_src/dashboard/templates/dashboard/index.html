@@ -1,0 +1,95 @@
+<!doctype html>
+<HTML>
+    <head>
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <h1>Dashboard</h1>
+        <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+        <div id="pivot-container" ></div>
+
+        <script>
+            function processData(dataset) {
+                var result = []
+                dataset = JSON.parse(dataset);
+                dataset.forEach(item => result.push(item.fields));
+                return result;
+            }
+        </script>
+
+        <script>
+            $.ajax({
+                url: '/dashboard/temp_data',
+                dataType: 'json',
+                success: function(data) {
+                    new Flexmonster({
+                        container: "#pivot-container",
+                        componentFolder: "https://cdn.flexmonster.com/",
+                        toolbar: true,
+                        report: {
+                            dataSource: {
+                                type: "json",
+                                data: processData(data),
+                                mapping: {
+                                    "node_id": { "caption": "Node_ID" },
+                                    "loc": { "caption": "Location" },
+                                    "temp": { "caption": "Temperature", "type": "number" },
+                                    "hum": { "caption": "Hum", "type": "number"},
+                                    "light": { "caption": "Light", "type": "number"},
+                                    "snd": { "caption": "Sound", "type": "number"},
+                                }
+                            },
+                            slice: {
+                                rows: [
+                                    { uniqueName : "node_id"},
+                                ],
+                                columns: [
+                                    { uniqueName : "loc"},
+                                    { uniqueName : "[measures]", label : "Temperature" },
+                                    { uniqueName : "[measures]", label : "Humidity" },
+                                    { uniqueName : "[measures]", label : "Light" },
+                                    { uniqueName : "[measures]", label : "Sound" },
+                                ],
+                                measures: [
+                                    { 
+                                        uniqueName : "temp",
+                                        aggregation : "average",
+                                    },
+                                    { 
+                                        uniqueName : "hum",
+                                        aggregation : "average",
+                                    },
+                                    { 
+                                        uniqueName : "light",
+                                        aggregation : "average",
+                                    },
+                                    { 
+                                        uniqueName : "snd",
+                                        aggregation : "average",
+                                    },
+                                ]
+                            },
+                            formats: [
+                                {
+                                    name: "degree",
+                                    decimalPlaces: 1,
+                                }
+                            ],
+                            conditions: [
+                                
+                            ],
+                            options: {
+                                viewType: "charts",
+                                chart: {
+                                    type: "Column",
+                                },
+                            },
+                        }
+                    });
+                }
+            });
+        </script>
+    </body>
+</HTML>

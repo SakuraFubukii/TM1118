@@ -1,0 +1,173 @@
+table, td, th
+{
+    border:2px solid black;
+    text-align:center;
+}
+th
+{
+    background-color: black;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    color:#00ffdd;
+}
+tbody{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color:black;
+}
+
+h1.cyberpunk {
+    position: relative;
+}
+h1.cyberpunk:before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 2px;
+    width: 100%;
+    height: 10px;
+    background-color: #000;
+    clip-path: polygon(0px 0px, 85px 0px, 90px 5px, 100% 5px, 100% 6px, 85px 6px, 80px 10px, 0px 10px);
+}
+h1.cyberpunk.glitched {
+    animation-name: glitched;
+    animation-duration: calc(.9s * 1.4);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes glitched {
+    0% { left: -4px; transform: skew(-20deg); }
+    11% { left: 2px; transform: skew(0deg); }
+    50% { transform: skew(0deg); }
+    51% { transform: skew(10deg); }
+    60% { transform: skew(0deg); }
+    100% { transform: skew(0deg); }
+}
+h1.cyberpunk.glitched:before {
+    animation-name: beforeglitched;
+    animation-duration: calc(.9s * 2);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes beforeglitched {
+    0% {
+        left: -4px;
+        transform: skew(-20deg);
+        clip-path: polygon(0px 0px, 85px 0px, 90px 5px, 100% 5px, 100% 6px, 85px 6px, 80px 10px, 0px 10px);
+    }
+    11% {
+        left: 2px;
+        transform: skew(0deg);
+        clip-path: polygon(0px 0px, 85px 0px, 90px 5px, 100% 5px, 100% 6px, 85px 6px, 80px 10px, 0px 10px);
+    }
+    50% {
+        transform: skew(0deg);
+        clip-path: polygon(0px 0px, 85px 0px, 90px 5px, 100% 5px, 100% 6px, 85px 6px, 80px 10px, 0px 10px);
+    }
+    51% {
+        transform: skew(0deg);
+        clip-path: polygon(0px 0px, 85px 0px, 90px 5px, 100% 5px, 40% 5px, calc(40% - 30px) 0px, calc(40% + 30px) 0px, calc(45% - 15px) 5px, 100% 5px, 100% 6px, calc(45% - 14px) 6px, calc(40% + 29px) 1px, calc(40% - 29px) 1px, calc(40% + 1px) 6px, 85px 6px, 80px 10px, 0px 10px);
+    }
+    60% {
+        transform: skew(0deg);
+        clip-path: polygon(0px 0px, 85px 0px, 90px 5px, 100% 5px, 100% 6px, 85px 6px, 80px 10px, 0px 10px);
+    }
+    100% {
+        transform: skew(0deg);
+        clip-path: polygon(0px 0px, 85px 0px, 90px 5px, 100% 5px, 100% 6px, 85px 6px, 80px 10px, 0px 10px);
+    }
+}
+
+bottom-right-image {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+
+}
+
+button, button::after {
+    width: 150px;
+    height: 50px;
+    background: linear-gradient(30deg,transparent 10%,#ff0037 10% 95%, #00ffdd 95%);
+    border: 0;
+    font-weight: bold;
+    color: #fff;
+    box-shadow: 6px 0px 0px #00E6F6;
+    outline: transparent;
+    position: fixed; 
+    bottom: 20px; 
+    right:20px;
+    cursor: pointer;
+}
+button::after {
+    --slice-0: inset(50% 50% 50% 50%);
+    --slice-1: inset(80% -6px 0 0);
+    --slice-2: inset(50% -6px 30% 0);
+    --slice-3: inset(10% -6px 85% 0);
+    --slice-4: inset(40% -6px 43% 0);
+    --slice-5: inset(80% -6px 5% 0);
+    content: 'Go to transfer ';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
+    text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+    clip-path: var(--slice-0);
+}
+button:hover::after {
+    animation: 1s glitch;
+    animation-timing-function: steps(2, end);
+}
+@keyframes glitch {
+    0% { clip-path: var(--slice-1); transform: translate(-20px, -10px); }
+    10% { clip-path: var(--slice-3); transform: translate(10px, 10px); }
+    20% { clip-path: var(--slice-1); transform: translate(-10px, 10px); }
+    30% { clip-path: var(--slice-3); transform: translate(0px, 5px); }
+    40% { clip-path: var(--slice-2); transform: translate(-5px, 0px); }
+    50% { clip-path: var(--slice-3); transform: translate(5px, 0px); }
+    60% { clip-path: var(--slice-4); transform: translate(5px, 10px); }
+    70% { clip-path: var(--slice-2); transform: translate(-10px, 10px); }
+    80% { clip-path: var(--slice-5); transform: translate(20px, -10px); }
+    90% { clip-path: var(--slice-1); transform: translate(-10px, 0px); }
+    100% { clip-path: var(--slice-1); transform: translate(0); }
+}
+
+.neon {
+    text-shadow: 0 0 3vw #F4BD0A;
+    animation: neon 2s ease-in-out infinite;
+}
+.flux {
+    text-shadow: 0 0 3vw #179E05;
+    animation: flux 2s linear infinite;
+}
+@keyframes neon {
+    0%, 100% {
+        text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128, .5vw .5vw .1vw #806914;
+        color: #FFFC00;
+    }
+    50% {
+        text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B, .5vw .5vw .1vw #40340A;
+        color: #806914;
+    }
+    }
+    @keyframes flux {
+    0%, 100% {
+        text-shadow: 0 0 1vw #10ff4c, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF, 0 0 .4vw #8BFDFE, .5vw .5vw .1vw #147280;
+        color: #03C03C;
+    }
+    50% {
+        text-shadow: 0 0 .5vw #024218, 0 0 1.5vw #024713, 0 0 5vw #023812, 0 0 5vw #012707, 0 0 .2vw #022201, .5vw .5vw .1vw #011a06;
+        color: #179E05;
+    }
+}
+.header {
+
+    backdrop-filter: blur(10px);
+    height: 100px;
+}
