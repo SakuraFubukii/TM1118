@@ -1,9 +1,0 @@
-antlr4-python3-runtime==4.10
-asgiref==3.5.0
-Django==3.2.13
-mysqlclient==2.1.0
-Pillow==9.0.1
-simplejson==3.17.6
-sqlparse==0.4.2
-tzdata==2021.5
-PyMySQL==1.0.2
