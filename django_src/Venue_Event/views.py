@@ -3,7 +3,6 @@ import pandas as pd
 from datetime import datetime
 from .models import Event
 import datetime
-from django.core.paginator import Paginator
 
 
 def upload_excel(request):
