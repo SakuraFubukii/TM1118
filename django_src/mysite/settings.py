@@ -19,7 +19,8 @@ INSTALLED_APPS = [
     'iot',
     'dashboard',
     'genshin',
-    'Venue_Event'
+    'Venue_Event',
+    'faceDetect'
 ]
 
 MIDDLEWARE = [

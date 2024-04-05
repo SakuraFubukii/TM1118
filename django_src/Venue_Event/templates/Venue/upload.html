@@ -1,19 +1,51 @@
-<!-- display.html -->
-<table>
-    <tr>
-        <th>Venue</th>
-        <th>Time Start</th>
-        <th>Time End</th>
-        <th>Event</th>
-        <th>Instructor</th>
-    </tr>
-    {% for event in events %}
-        <tr>
-            <td>{{ event.venue }}</td>
-            <td>{{ event.time_start }}</td>
-            <td>{{ event.time_end }}</td>
-            <td>{{ event.event_name }}</td>
-            <td>{{ event.instructor }}</td>
-        </tr>
-    {% endfor %}
-</table>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Datepicker</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+        <script>
+        $(function() {
+          $( "#startdate" ).datepicker();
+          $( "#enddate" ).datepicker();
+        });
+        $(document).ready(function(){
+            $("#submit").click(function(){
+                alert("Venue:" + $("#Venue").val() + "Start: " + $("#startdate").val() + "End: " + $("#enddate").val());
+            });
+        });
+        </script>
+    </head>
+
+    <body>
+        <p>Venue:<input type = "text" id = "Venue"></p>
+        <p>Start Date:<input type="text" id="startdate"></p>
+        <p>End Date:<input type="text" id="enddate"></p>
+        <button id="submit">Submit</button>
+        <table id="mainTable">
+            <thead>
+                <tr>
+                    <th>Venue</th>
+                    <th>Time Start</th>
+                    <th>Time End</th>
+                    <th>Event</th>
+                    <th>Instructor</th>
+                </tr>
+            </thead>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.venue }}</td>
+                    <td>{{ event.time_start }}</td>
+                    <td>{{ event.time_end }}</td>
+                    <td>{{ event.event_name }}</td>
+                    <td>{{ event.instructor }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <script>
+            
+        </script>
+    </body>
+</html>
