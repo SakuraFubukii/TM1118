@@ -4,7 +4,6 @@ from datetime import datetime
 from .models import Event
 import datetime
 
-
 def upload_excel(request):
     df = pd.read_excel("Venue_Event.xlsx")
     events = []
