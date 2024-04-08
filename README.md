@@ -1,11 +1,11 @@
 ## Installation and Running  
-1. Download the requirement:  
+__1. Download the requirement:__  
    pip install pandas  
    pip install openpyxl  
-3. Activate a virtual environment for django  
+__2. Activate a virtual environment for django__  
    cd C:/  
    django-env\Scripts\activate.bat   
-4. ~~Start Genshin Impact~~    
+__3. ~~Start Genshin Impact~~__    
    python manage.py runserver   
 
 ![Image text](https://github.com/OctSakura/TM1118/blob/main/%E5%8E%9F%E7%A5%9E.jpeg)
