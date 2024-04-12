@@ -9,6 +9,7 @@ class Event(models.Model):
     hum = models.DecimalField(max_digits=5, decimal_places=2)
     light = models.DecimalField(max_digits=5, decimal_places=2)
     snd = models.DecimalField(max_digits=5, decimal_places=2)
+    time = models.DateTimeField()
 
     #Methods
     def __str__(self):
