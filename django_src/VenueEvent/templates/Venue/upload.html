@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+      
+        <title>IC2140 TM1118</title>
+    </head>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Smart Campus in W311</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
+            </li>
+    
+    
+            <li class="nav-item">
+              <a class="nav-link" href="/query">Query</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/log">Log</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/excel">Venue Events</a>
+            </li>
+          </ul>
+          <div class="d-flex">
+            <button class="btn btn-outline-dark" type="submit">
+              <i class="bi bi-mask"></i>
+              Dark Mode
+              <div class="form-check form-switch" style=" display: inline-flex; ">
+                <input class="form-check-input" type="checkbox" id="darkMode">
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <body>
+        <div class="container">
+          <!-- Content here -->
+          <div class="row">
+            <div class="col">
+              <h1>Venue Events</h1>
+            </div>
+            <div class="col">
+              <div class="float-end">
+      
+                
+              </div>
+             </div>
+      
+          </div>
+      
+      <div class="row">
+      
+        <form action="/Venue/" method="POST" id="post-form">
+          <input type="date" id="startdate" name="startdate" reqired>
+          <input type="time" id="starttime" name="starttime" required>
+          <input type="date" id="enddate" name="enddate" reqired>
+          <input type="time" id="endtime" name="endtime" required>
+          <input type="submit" value="Send Request">
+        </form>
+        <tbody>
+      
+        <table class="table table-striped table-hover" id="dataTable" data-page-length="15">
+          <thead class="table-dark">
+            <tr>
+              <th>Venue</th>
+              <th>Date</th>
+              <th>Time Start</th>
+              <th>Time End</th>
+              <th>Event</th>
+              <th>Instructor</th>
+            </tr>
+          </thead>
+      
+          
+            {% for VenueEvent in VenueEvents %}
+            <tr>
+              <td>{{ VenueEvent.venue }}</td>
+              <td>{{ VenueEvent.date }}</td>
+              <td>{{ VenueEvent.timeStart }}</td>
+      
+              <td>{{VenueEvent.timeEnd}}</td>
+      
+              <td>{{VenueEvent.event}}</td>
+      
+              <td>{{VenueEvent.instructor}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      
+        </div>
+      </div>
+        <!-- Javascript: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+      
+      </body>
+      <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+      <script>
+          $('#dataTable').DataTable({"lengthMenu": [[15,25, 50,100, -1], [15, 25, 50,100, "All"]]});
+      </script>
+</html>
+   

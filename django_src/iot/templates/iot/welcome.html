@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Log in</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://upload.wikimedia.org/wikipedia/zh/a/a0/Paimon%28Genshinimpact%29.png'), 
+      url('https://img2.imgtp.com/2024/04/05/QQgAYhrX.png');
+      background-position: top left, top right;
+      background-repeat: no-repeat, no-repeat;
+      background-size: auto, 25%;
+    }
+        /* 调整左边图片的位置 */
+    body {
+      background-position-y: 20px; /* 向下移动 10 像素 */
+    }
+
+    .container {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .container h2 {
+      text-align: center;
+    }
+
+    .container input[type="text"],
+    .container input[type="password"],
+    .container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box; /* 保持输入框宽度不变 */
+    }
+    .container input[type="text"],
+    .container input[type="password"] {
+        padding-right: 40px; /* 调整输入框右侧的 padding 值 */
+    }
+    .container input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .container input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Log in</h2>
+    <form action="#" onsubmit="return validateLogin()">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <input type="submit" value="log in">
+    </form>
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    function validateLogin() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var message = document.getElementById("message");
+
+      if (username === "admin" && password === "admin") {
+        message.textContent = "log in successfully!";
+        message.style.color = "green";
+        setTimeout(function() {
+          window.location.href = "http://localhost:8000/iot/";
+        }, 500); // 跳转延迟时间（毫秒），这里设置为2秒
+        return false; // 阻止表单的默认提交行为
+      } else {
+        message.textContent = "Fail to log in! Wrong username or password :(";
+        message.style.color = "red";
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

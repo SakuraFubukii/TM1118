@@ -1,6 +1,19 @@
-table, td, th
+
+.container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+table{
+    width:100%;
+    font-family: 'Orbitron', sans-serif;
+    border:1px solid black;
+    text-align:center;
+}
+td, th
 {
-    border:2px solid black;
+    font-family: 'Orbitron', sans-serif;
+    border:1px solid black;
     text-align:center;
 }
 th
@@ -8,7 +21,7 @@ th
     background-color: black;
     text-align: center;
     font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Orbitron', sans-serif;
     color:#00ffdd;
 }
 tbody{
@@ -19,6 +32,7 @@ tbody{
 }
 
 h1.cyberpunk {
+    font-family: 'Orbitron', sans-serif;
     position: relative;
 }
 h1.cyberpunk:before {
@@ -89,6 +103,7 @@ bottom-right-image {
 }
 
 button, button::after {
+    font-family: 'Orbitron', sans-serif;
     width: 150px;
     height: 50px;
     background: linear-gradient(30deg,transparent 10%,#ff0037 10% 95%, #00ffdd 95%);

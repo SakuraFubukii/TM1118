@@ -14,3 +14,9 @@ def index(request):
                'W311_H2':W311_H2, 'W311_H3':W311_H3, 'W311d_Z1':W311d_Z1, 'W311d_Z2':W311d_Z2}
     
     return render(request, 'iot/index.html', context)
+
+def transfer(request):
+    return render(request, 'iot/transfer.html')
+
+def welcome(request):
+    return render(request, 'iot/welcome.html')

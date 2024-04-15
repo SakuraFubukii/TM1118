@@ -24,5 +24,5 @@ urlpatterns = [
     path('',include('genshin.urls')),
     path('iot/', include('iot.urls')),
     path('dashboard/', include('dashboard.urls')),
-    path('Venue/', include('Venue_Event.urls')),
+    path('Venue/', include('VenueEvent.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

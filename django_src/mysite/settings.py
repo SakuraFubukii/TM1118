@@ -19,8 +19,9 @@ INSTALLED_APPS = [
     'iot',
     'dashboard',
     'genshin',
-    'Venue_Event',
-    'faceDetect'
+    'VenueEvent',
+    'faceDetect',
+    'dataAnalysis'
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Hong_Kong'
 
 USE_I18N = True
 

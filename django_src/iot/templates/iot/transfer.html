@@ -1,0 +1,158 @@
+<!doctype html>
+{% load static %}
+<HTML>
+    <head>
+        <title> Smart Campus </title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <script>
+            var idleTime = 0;
+            var idleTimeout = 10; // 设置超时时间为15秒
+    
+            // 检测用户活动
+            function resetTimer() {
+                idleTime = 0;
+            }
+    
+            // 检查用户活动时间
+            function checkIdleTime() {
+                idleTime++;
+                if (idleTime >= idleTimeout) {
+                    // 执行自动返回登录界面的操作，例如重定向到登录页面
+                    window.location.href = 'http://localhost:5173';
+                }
+            }
+    
+            // 监听用户活动事件
+            document.addEventListener('mousemove', resetTimer);
+            document.addEventListener('keydown', resetTimer);
+            document.addEventListener('mousedown', resetTimer);
+            document.addEventListener('touchstart', resetTimer);
+            setInterval(checkIdleTime, 1000); // 每秒检查一次用户活动时间
+        </script>
+        <style>
+            .rectangle {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 30%;
+                background-color: rgba(0, 0, 0, 0.5); /* 设置黑色透明度为25% */
+                color: white;
+                padding: 10px;
+                box-sizing: border-box;
+                font-size: 24px;
+                overflow: auto;
+                z-index: 1;
+                font-weight: bold;
+            }
+            .rectangle::before {
+                content: "";
+                position: absolute;
+                top: -18px;
+                left: -5;
+                width: 30px;
+                height: 10px;
+                border-bottom: 30px solid rgba(0, 0, 0, 0.25); /* 设置底边的高度和颜色 */
+                border-right: 30px solid transparent; /* 设置右边的宽度和透明 */
+                z-index: 2;
+            }
+            .centered-image {
+                position: fixed;
+                top: 60%;
+                left: 90%;
+                transform: translate(-50%, -50%);
+                z-index: 0;
+                width: 100%;
+                height: auto; 
+            }
+        </style>
+    <body style="background-color: #fcee09;">
+        <div id="header" style="background-color:black; 
+        position: fixed; top: 0;left: 0;height:80px; width: 100%;">
+        <div class="header">
+            <h1 class="cyberpunk glitched">&nbsp;TransferStation</h1>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="rectangle">
+        <p id="text" style="font-family: 'Courier New', Courier, monospace; "></p>
+        </div>
+        <img src="https://img2.imgtp.com/2024/02/09/yW45Eljy.png" alt="Centered Image" class="centered-image">
+        <script>
+            var textElement = document.getElementById('text');
+            var lines = [
+                '  Press i for InfoPort',
+                '  Press d for Dashboard',
+                '  Press u for Upload',
+                '  Press y for Genshin'
+            ];
+            var lineIndex = 0;
+            var charIndex = 0;
+            
+            function showNextCharacter() {
+                if (lineIndex < lines.length) {
+                    var line = lines[lineIndex];
+                    
+                    if (charIndex < line.length) {
+                        var character = line.charAt(charIndex);
+                        textElement.innerHTML += character;
+                        charIndex++;
+                        setTimeout(showNextCharacter, 40); // 设置字符显示的时间间隔（毫秒）
+                    } else {
+                        textElement.innerHTML += '<br>'; // 换行
+                        lineIndex++;
+                        charIndex = 0;
+                        setTimeout(showNextCharacter, 40); // 设置行与行之间的时间间隔（毫秒）
+                    }
+                }
+            }
+            showNextCharacter();
+        </script>
+        <script>
+            document.addEventListener('keydown', function(event) {
+                // 检查用户按下的是哪个键
+                var key = event.key.toLowerCase();
+                
+                // 如果用户按下的是特定字母（例如 'a'），执行相应的操作
+                if (key === 'i') {
+                    // 执行进入另一个节目的操作
+                    enterAnotherProgram1();
+                }
+                if (key === 'd') {
+                    // 执行进入另一个节目的操作
+                    enterAnotherProgram2();
+                }
+                if (key === 'u') {
+                    // 执行进入另一个节目的操作
+                    enterAnotherProgram3();
+                }
+                if (key === 'y') {
+                    // 执行进入另一个节目的操作
+                    enterAnotherProgram4();
+                }
+            });
+            function enterAnotherProgram1() {
+                // 在这里编写进入另一个节目的逻辑
+                window.location.href = 'http://localhost:8000/iot/';
+                // 可以在这里跳转到其他页面或执行其他操作
+            }
+            function enterAnotherProgram2() {
+                // 在这里编写进入另一个节目的逻辑
+                window.location.href = 'http://localhost:8000/dashboard/';
+                // 可以在这里跳转到其他页面或执行其他操作
+            }
+            function enterAnotherProgram3() {
+                // 在这里编写进入另一个节目的逻辑
+                window.location.href = 'http://localhost:8000/Venue/';
+                // 可以在这里跳转到其他页面或执行其他操作
+            }
+            function enterAnotherProgram4() {
+                // 在这里编写进入另一个节目的逻辑
+                window.location.href = 'http://localhost:8000/';
+                // 可以在这里跳转到其他页面或执行其他操作
+            }
+        </script>
+    </body>
+</HTML>
