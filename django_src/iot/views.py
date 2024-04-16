@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Event,tm1118_log
+from .models import Event
+from . import iot_mqtt
 
 def index(request):
     events = Event.objects.all()

@@ -28,3 +28,7 @@ class tm1118_log(models.Model):
     #Methods
     def __str__(self):
         return 'tm1118_log #{}'.format(self.id)
+
+class Step(models.Model):
+    value = models.DecimalField(max_digits=6, decimal_places=2)
+    date_created = models.DateTimeField(auto_now_add=True)

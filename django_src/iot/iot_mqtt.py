@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
 from .models import Event
 import json
+from datetime import datetime
 # ID="B05" # Sensor ID
 mqtt_broker = "broker.hivemq.com" # Broker
 mqtt_port = 1883 # Default
@@ -15,7 +16,7 @@ def mqtt_on_message(client, userdata, msg):
     #if iotData["node_id"] == ID:
     
     print("Received message on topic %s : %s" % (msg.topic, iotData))
-    p = Event(node_id=iotData["node_id"], loc=iotData["loc"], temp=iotData["temp"] ,hum = iotData["hum"], light = iotData["light"], snd = iotData["snd"])
+    p = Event(node_id=iotData["node_id"], loc=iotData["loc"], temp=iotData["temp"] ,hum = iotData["hum"], light = iotData["light"], snd = iotData["snd"], time = datetime.now())
     p.save()
 
 mqtt_client = mqtt.Client("django-B05") # Create a Client Instance
