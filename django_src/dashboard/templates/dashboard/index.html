@@ -1,14 +1,23 @@
 <!doctype html>
+{% load static %}
 <HTML>
     <head>
         <title>Dashboard</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     </head>
-    <body>
-        <h1>Dashboard</h1>
+    <body style="background-color: #fcee09;">
+        <div class="header">
+            <h1 class="cyberpunk glitched">DASHBOARD</h1>
+        </div>
+        <div style="width:70%; margin: 0 auto;">
         <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-        <div id="pivot-container" ></div>
+        <link rel="stylesheet" type="text/css" 
+        href="https://cdn.flexmonster.com/theme/dark/flexmonster.min.css"/>
+        <div id="pivot-container" style="width:70%; border: 2px solid  #00ffdd; 
+        border-radius: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.1);">
+        </div>
 
         <script>
             function processData(dataset) {
@@ -91,5 +100,9 @@
                 }
             });
         </script>
+        </div>
+        <a href="http://localhost:8000/iot/transfer/">
+            <button>Go to transfer station</button>
+        </a>
     </body>
 </HTML>
