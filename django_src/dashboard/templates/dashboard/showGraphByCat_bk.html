@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- Javascript: chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<body>
+    <h1 id="DataType">Graph</h1>
+    <div id="charts"></div>
+    <canvas id="chart_T" width="400" height="200"></canvas>
+    <canvas id="chart_H" width="400" height="200"></canvas>
+    <canvas id="chart_L" width="400" height="200"></canvas>
+    <canvas id="chart_S" width="400" height="200"></canvas>
+   
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script>
+    Chart.defaults.color = "#999999";
+    var chartData = [
+        { 'loc': 'W311-H1' },
+        { 'loc': 'W311-H2' },
+        { 'loc': 'W311-H3' },
+        { 'loc': 'W311A' },
+        { 'loc': 'W311B' },
+        { 'loc': 'W311D-Z1' },
+        { 'loc': 'W311D-Z2' },
+    ]
+
+    // initialize Charts
+
+    chartData.forEach(e => {
+        c = document.createElement("canvas");
+        c.setAttribute("id", "chart_" + e['loc']);
+
+        document.getElementById('charts').appendChild(c);
+
+    
+        e['chart'] = new Chart(c, {
+            type: "line",
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+               
+                scale: {
+                    y: {
+                        min: 0,
+                        max: 35
+                    },
+                    xAxis: {
+
+                        type: 'time',
+                    }
+                }
+            },
+            data: {
+                labels: [],
+                datasets: [
+                    {
+                        borderColor: 'rgb(155, 155, 155)',
+                        label: e['loc'],
+                        data: [],
+                    },
+                ],
+            },
+        });
+    });
+
+
+    function updateChart() {
+        chartData.forEach(e => {
+            $.ajax({
+                type: 'POST',
+                url: '/dashboard/data_test',
+                data: { 'loc': e['loc'] },
+                complete: function () {
+                    setTimeout(updateChart, 1000 * 30);
+                },
+                success: function (data) {
+                    var dataTemp = [];
+                    dataset = JSON.parse(data)
+                    dataset.reverse()
+                    dataset.forEach((item) => dataTemp.push(item.fields.temp));
+                    var dataTimestamp = [];
+                    dataset.forEach((item) =>
+                        dataTimestamp.push(item.fields.time)
+                    );
+
+
+
+                    e['chart'].data.labels = dataTimestamp;
+                    e['chart'].data.datasets[0].data = dataTemp;
+                    e['chart'].update();
+                }
+            })
+        });
+    };
+    // updateChart();
+
+
+</script>
+
+</html>

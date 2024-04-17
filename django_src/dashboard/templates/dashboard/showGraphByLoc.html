@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style-custom.css' %}">
+    <title>IC2140 TM1118</title>
+</head>
+<!-- Javascript: chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Smart Campus in W311</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/graph/overview">Graphs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/log">Query</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/log">Log</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi bi-mask"></i>
+                    Dark Mode
+                    <div class="form-check form-switch" style=" display: inline-flex; ">
+                        <input class="form-check-input" type="checkbox" id="darkMode">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<body>
+    <div class="container">
+        <!-- Content here -->
+        <style>
+            
+        </style>
+        <div class="row" style="padding: 0px; margin: 0px;">
+      <div class="col text-center">
+        <p style="padding: 0px; margin: 0px;">Graphs</p>
+      </div>
+  
+    </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div>
+                        <canvas class="card-img" alt id='chart_T' style="    height:32vh;"></canvas>
+                    </div>
+
+                </div>
+                <div class="row  text-center" style="padding-top: 0px;">
+                    <p class="text-secondary" style="font-size: larger;">Temperature</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div>
+                        <canvas class="card-img" alt id='chart_H' style="    height: 32vh;"></canvas>
+                    </div>
+
+                </div>
+                <div class="row  text-center" style="padding-top: 0px;">
+                    <p class="text-secondary" style="font-size: larger;">Humidity</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div>
+                        <canvas class="card-img" alt id='chart_L' style="    height:32vh;"></canvas>
+                    </div>
+
+                </div>
+                <div class="row  text-center" style="padding-top: 0px;">
+                    <p class="text-secondary" style="font-size: larger;">Light</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div>
+                        <canvas class="card-img" alt id='chart_S' style="    height: 32vh;"></canvas>
+                    </div>
+
+                </div>
+                <div class="row  text-center" style="padding-top: 0px;">
+                    <p class="text-secondary" style="font-size: larger;">Sound</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <div class="">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Javascript: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var chartData = [
+            { 'type': 'T', 'min': 0, 'max': 35, },
+            { 'type': 'H', 'min': 0, 'max': 100, },
+            { 'type': 'L', 'min': 0, 'max': 100, },
+            { 'type': 'S', 'min': -70, 'max': 30, },
+        ]
+        // initialize Charts
+        Chart.defaults.color = "#999999";
+        chartData.forEach(e => {
+            c = document.getElementById('chart_' + e.type)
+            e['chart'] = new Chart(c, {
+                type: "line",
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scale: {
+                        y: {
+                            min: e['min'],
+                            max: e['max'],
+                        },
+                        xAxis: {
+
+                            type: 'time',
+                        }
+                    },
+                },
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+
+
+
+                        borderColor: 'rgb(155, 155, 155)',
+                    }],
+                },
+            });
+        });
+    </script>
+    <script>
+        function getFeed() {
+            $.ajax({
+                url: "/dashboard/dashboard-data",
+                dataType: "json",
+                success: function (data) {
+                    var dataTemp = [];
+                    dataset = JSON.parse(data)
+                    dataset.forEach((e, idx) => { dataset[idx] = e.fields })
+                    dataset.sort((a, b) => (a.loc > b.loc) ? 1 : -1)
+                    updateTime = (dataset[0].time);
+
+                    meterData[0]['data'] = (dataset.reduce((total, next) => total + next.temp, 0) / dataset.length).toFixed(2);
+                    meterData[1]['data'] = (dataset.reduce((total, next) => total + next.hum, 0) / dataset.length).toFixed(2);
+                    meterData[2]['data'] = (dataset.reduce((total, next) => total + next.light, 0) / dataset.length).toFixed(2);
+                    meterData[3]['data'] = (dataset.reduce((total, next) => total + next.snd, 0) / dataset.length).toFixed(2);
+
+                    meterData.forEach(e => {
+                        document.getElementById("avg" + e.type).innerHTML = e.data
+                        p = (e.data - e.min) / (e.max - e.min)
+                        p = p <= e.min ? e.min : p >= e.max ? e.max : p
+
+                        e['chart'].data.datasets[0].data = [p, 1 - p];
+                        e['chart'].update();
+                    });
+
+                    updateTime = new Date(updateTime.substring(0, 19) + ".000+00:00")
+
+
+                    document.getElementById("updateTime").innerHTML = updateTime.toLocaleString('en-HK');
+                    document.getElementById("tableData").innerHTML = ""
+                    let tableRef = document.getElementById("tableData");
+                    dataset.forEach((e, idx) => {
+                        let newRow = tableRef.insertRow(-1);
+                        (newRow.insertCell()).appendChild(document.createTextNode(e.loc));
+                        (newRow.insertCell()).appendChild(document.createTextNode(e.temp + "°C"));
+                        (newRow.insertCell()).appendChild(document.createTextNode(e.hum + "%"));
+                        (newRow.insertCell()).appendChild(document.createTextNode(e.light + "%"));
+                        (newRow.insertCell()).appendChild(document.createTextNode(e.snd + "dB"));
+                    })
+                },
+                complete: function (data) {
+                    setTimeout(getFeed, 1000 * 30);
+                },
+            });
+        }
+        getFeed()
+    </script>
+</body>
+{% load static %}
+<script src="{% static 'darkmode.js' %}"></script>
+
+</html>

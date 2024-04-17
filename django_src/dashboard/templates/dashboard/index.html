@@ -1,108 +1,135 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style-custom.css' %}">
+
+  <title>IC2140 TM1118</title>
+</head>
+<!-- Javascript: chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Smart Campus in W311</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="./dashboard">Dashboard</a>
+        </li>
+
+
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="log">Log</a>
+        </li>
+
+
+
+      </ul>
+
+      <div class="d-flex">
+        <button class="btn btn-outline-dark" onclick="setDarkMode()" type="submit">
+          <i class="bi bi-mask"></i>
+          Dark Mode
+
+          <div class="form-check form-switch" style=" display: inline-flex; ">
+            <input class="form-check-input" type="checkbox" id="darkMode">
+
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<body>
+  <div class="container">
+    <!-- Content here -->
+    <h5><span class="badge bg-secondary">#1</span></h5>
+
+    <h1>IoT sensor nodes</h1>
+
+    <p>MQTT data</p>
+
+    <canvas id="chart" width="400" height="200"></canvas>
+    <script>
+      Chart.defaults.color = "#999999";
+      var ctx = document.getElementById("chart");
+      var chart = new Chart(ctx, {
+        type: "line",
+
+        data: {
+          labels: [],
+
+          datasets: [
+            {
+
+              borderColor: 'rgb(155, 155, 155)',
+              label: 'Temperatures Through Time',
+              data: [],
+            },
+          ],
+        },
+      });
+
+    </script>
+  </div>
+
+  <!-- Javascript: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    function getFeed() {
+      $.ajax({
+        url: "/dashboard/data_event",
+        dataType: "json",
+        success: function (data) {
+          var dataTemp = [];
+          dataset = JSON.parse(data)
+          dataset.reverse()
+          dataset.forEach((item) => dataTemp.push(item.fields.temp));
+          var dataTimestamp = [];
+          dataset.forEach((item) =>
+            dataTimestamp.push(item.fields.time)
+          );
+          chart.data.labels = dataTimestamp;
+          chart.data.datasets[0].data = dataTemp;
+          chart.update();
+
+        },
+        complete: function (data) {
+          setTimeout(getFeed, 1000);
+        },
+      });
+    }
+    $(document).ready(function () {
+      setTimeout(getFeed, 1000);
+    });
+
+  </script>
+</body>
+
 {% load static %}
-<HTML>
-    <head>
-        <title>Dashboard</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-    </head>
-    <body style="background-color: #fcee09;">
-        <div class="header">
-            <h1 class="cyberpunk glitched">DASHBOARD</h1>
-        </div>
-        <div style="width:70%; margin: 0 auto;">
-        <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <link rel="stylesheet" type="text/css" 
-        href="https://cdn.flexmonster.com/theme/dark/flexmonster.min.css"/>
-        <div id="pivot-container" style="width:70%; border: 2px solid  #00ffdd; 
-        border-radius: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.1);">
-        </div>
+<script src="{% static 'darkmode.js' %}"></script>
 
-        <script>
-            function processData(dataset) {
-                var result = []
-                dataset = JSON.parse(dataset);
-                dataset.forEach(item => result.push(item.fields));
-                return result;
-            }
-        </script>
-
-        <script>
-            $.ajax({
-                url: '/dashboard/temp_data',
-                dataType: 'json',
-                success: function(data) {
-                    new Flexmonster({
-                        container: "#pivot-container",
-                        componentFolder: "https://cdn.flexmonster.com/",
-                        toolbar: true,
-                        report: {
-                            dataSource: {
-                                type: "json",
-                                data: processData(data),
-                                mapping: {
-                                    "node_id": { "caption": "Node_ID" },
-                                    "loc": { "caption": "Location" },
-                                    "temp": { "caption": "Temperature", "type": "number" },
-                                    "hum": { "caption": "Hum", "type": "number"},
-                                    "light": { "caption": "Light", "type": "number"},
-                                    "snd": { "caption": "Sound", "type": "number"},
-                                }
-                            },
-                            slice: {
-                                rows: [
-                                    { uniqueName : "node_id"},
-                                ],
-                                columns: [
-                                    { uniqueName : "loc"},
-                                    { uniqueName : "[measures]", label : "Temperature" },
-                                    { uniqueName : "[measures]", label : "Humidity" },
-                                    { uniqueName : "[measures]", label : "Light" },
-                                    { uniqueName : "[measures]", label : "Sound" },
-                                ],
-                                measures: [
-                                    { 
-                                        uniqueName : "temp",
-                                        aggregation : "average",
-                                    },
-                                    { 
-                                        uniqueName : "hum",
-                                        aggregation : "average",
-                                    },
-                                    { 
-                                        uniqueName : "light",
-                                        aggregation : "average",
-                                    },
-                                    { 
-                                        uniqueName : "snd",
-                                        aggregation : "average",
-                                    },
-                                ]
-                            },
-                            formats: [
-                                {
-                                    name: "degree",
-                                    decimalPlaces: 1,
-                                }
-                            ],
-                            conditions: [
-                                
-                            ],
-                            options: {
-                                viewType: "charts",
-                                chart: {
-                                    type: "Column",
-                                },
-                            },
-                        }
-                    });
-                }
-            });
-        </script>
-        </div>
-        <a href="http://localhost:8000/iot/transfer/">
-            <button>Go to transfer station</button>
-        </a>
-    </body>
-</HTML>
+</html>
