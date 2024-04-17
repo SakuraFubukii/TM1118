@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Event
-from . import iot_mqtt
+
 def index(request):
     events = Event.objects.all().order_by('-time')
     W311a = Event.objects.filter(loc = 'W311a').order_by('-time')
