@@ -1,17 +1,22 @@
 <!doctype html>
+
 {% load static %}
+
 <HTML>
+
     <head>
         <title> Smart Campus </title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
         <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     </head>
+
     <body style="background-color: #fcee09;">
         <div class="container">
             
             <div class="header">
                 <h1 class="cyberpunk glitched">INFOR PORT</h1>
             </div>
+            
             <button id="Main_Button" style="top: 80px;width: 7%;left: 10%;height:30px;">Main</button>
             <button id="W311_H1_Button" style="top: 80px;width: 7%;left: 20%;height:30px;">W311_H1</button>
             <button id="W311_H2_Button" style="top: 80px;width: 7%;left: 30%;height:30px;">W311_H2</button>
@@ -20,227 +25,215 @@
             <button id="W311b_Button" style="top: 80px;width: 7%;left: 60%;height:30px;">W311b</button>
             <button id="W311d_Z1_Button" style="top: 80px;width: 7%;left: 70%;height:30px;">W311d_Z1</button>
             <button id="W311d_Z2_Button" style="top: 80px;width: 7%;left: 80%;height:30px;">W311d_Z2</button>
+
             <div id="tableContainer">
+
                 <table id="W311_H1">
-                    <caption>Table: W311_H1</caption>
+
+                    <caption class="neon">Table: W311_H1</caption>
+
                     <thead>
                         <tr>
-                            <th style="text-align: center;">Node_ID</th>
-                            <th style="text-align: center;">Location</th>
-                            <th style="text-align: center;">Temperature</th>
-                            <th style="text-align: center;">Hum</th>
-                            <th style="text-align: center;">Light</th>
-                            <th style="text-align: center;">Snd</th>
-                            <th style="text-align: center;">Date Created</th>
+                            <th>Node_ID</th> <th>Location</th> <th>Temperature</th> <th>Hum</th> <th>Light</th> <th>Snd</th> <th>Date Created</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {% for event in W311_H1 %}
-                        <tr>
-                            <td style="text-align: center;"><strong>{{ event.node_id }}</strong></td>
-                            <td style="text-align: center;">{{ event.loc }}</td>
-                            <td style="text-align: center;">{{ event.temp }}</td>
-                            <td style="text-align: center;">{{ event.hum }}</td>
-                            <td style="text-align: center;">{{ event.light }}</td>
-                            <td style="text-align: center;">{{ event.snd }}</td>
-                            <td style="text-align: center;">{{ event.time }}</td>
-                        </tr>
+                            <tr>
+                                <td>{{ event.node_id }}</td>
+                                <td>{{ event.loc }}</td>
+                                <td>{{ event.temp }}</td>
+                                <td>{{ event.hum }}</td>
+                                <td>{{ event.light }}</td>
+                                <td>{{ event.snd }}</td>
+                                <td>{{ event.time }}</td>
+                            </tr>
                         {% endfor %}
                     </tbody>
+
                 </table>
 
                 <table id="W311_H2">
-                    <caption>Table: W311_H2</caption>
+
+                    <caption class="neon">Table: W311_H2</caption>
+
                     <thead>
                         <tr>
-                            <th style="text-align: center;">Node_ID</th>
-                            <th style="text-align: center;">Location</th>
-                            <th style="text-align: center;">Temperature</th>
-                            <th style="text-align: center;">Hum</th>
-                            <th style="text-align: center;">Light</th>
-                            <th style="text-align: center;">Snd</th>
-                            <th style="text-align: center;">Date Created</th>
+                            <th>Node_ID</th> <th>Location</th> <th>Temperature</th> <th>Hum</th> <th>Light</th> <th>Snd</th> <th>Date Created</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {% for event in W311_H2 %}
-                        <tr>
-                            <td style="text-align: center;"><strong>{{ event.node_id }}</strong></td>
-                            <td style="text-align: center;">{{ event.loc }}</td>
-                            <td style="text-align: center;">{{ event.temp }}</td>
-                            <td style="text-align: center;">{{ event.hum }}</td>
-                            <td style="text-align: center;">{{ event.light }}</td>
-                            <td style="text-align: center;">{{ event.snd }}</td>
-                            <td style="text-align: center;">{{ event.time }}</td>
-                        </tr>
+                            <tr>
+                                <td>{{ event.node_id }}</td>
+                                <td>{{ event.loc }}</td>
+                                <td>{{ event.temp }}</td>
+                                <td>{{ event.hum }}</td>
+                                <td>{{ event.light }}</td>
+                                <td>{{ event.snd }}</td>
+                                <td>{{ event.time }}</td>
+                            </tr>
                         {% endfor %}
                     </tbody>
+
                 </table>
 
                 <table id="W311_H3">
-                    <caption>Table: W311_H3</caption>
+
+                    <caption class="neon">Table: W311_H3</caption>
+
                     <thead>
                         <tr>
-                            <th style="text-align: center;">Node_ID</th>
-                            <th style="text-align: center;">Location</th>
-                            <th style="text-align: center;">Temperature</th>
-                            <th style="text-align: center;">Hum</th>
-                            <th style="text-align: center;">Light</th>
-                            <th style="text-align: center;">Snd</th>
-                            <th style="text-align: center;">Date Created</th>
+                            <th>Node_ID</th> <th>Location</th> <th>Temperature</th> <th>Hum</th> <th>Light</th> <th>Snd</th> <th>Date Created</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {% for event in W311_H3 %}
-                        <tr>
-                            <td style="text-align: center;"><strong>{{ event.node_id }}</strong></td>
-                            <td style="text-align: center;">{{ event.loc }}</td>
-                            <td style="text-align: center;">{{ event.temp }}</td>
-                            <td style="text-align: center;">{{ event.hum }}</td>
-                            <td style="text-align: center;">{{ event.light }}</td>
-                            <td style="text-align: center;">{{ event.snd }}</td>
-                            <td style="text-align: center;">{{ event.time }}</td>
-                        </tr>
+                            <tr>
+                                <td>{{ event.node_id }}</td>
+                                <td>{{ event.loc }}</td>
+                                <td>{{ event.temp }}</td>
+                                <td>{{ event.hum }}</td>
+                                <td>{{ event.light }}</td>
+                                <td>{{ event.snd }}</td>
+                                <td>{{ event.time }}</td>
+                            </tr>
                         {% endfor %}
                     </tbody>
+
                 </table>
 
                 <table id="W311a">
-                    <caption>Table: W311a</caption>
+
+                    <caption class="neon">Table: W311a</caption>
+
                     <thead>
                         <tr>
-                            <th style="text-align: center;">Node_ID</th>
-                            <th style="text-align: center;">Location</th>
-                            <th style="text-align: center;">Temperature</th>
-                            <th style="text-align: center;">Hum</th>
-                            <th style="text-align: center;">Light</th>
-                            <th style="text-align: center;">Snd</th>
-                            <th style="text-align: center;">Date Created</th>
+                            <th>Node_ID</th> <th>Location</th> <th>Temperature</th> <th>Hum</th> <th>Light</th> <th>Snd</th> <th>Date Created</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {% for event in W311a %}
-                        <tr>
-                            <td style="text-align: center;"><strong>{{ event.node_id }}</strong></td>
-                            <td style="text-align: center;">{{ event.loc }}</td>
-                            <td style="text-align: center;">{{ event.temp }}</td>
-                            <td style="text-align: center;">{{ event.hum }}</td>
-                            <td style="text-align: center;">{{ event.light }}</td>
-                            <td style="text-align: center;">{{ event.snd }}</td>
-                            <td style="text-align: center;">{{ event.time }}</td>
-                        </tr>
+                            <tr>
+                                <td>{{ event.node_id }}</td>
+                                <td>{{ event.loc }}</td>
+                                <td>{{ event.temp }}</td>
+                                <td>{{ event.hum }}</td>
+                                <td>{{ event.light }}</td>
+                                <td>{{ event.snd }}</td>
+                                <td>{{ event.time }}</td>
+                            </tr>
                         {% endfor %}
                     </tbody>
+
                 </table>
 
                 <table id="W311b">
-                    <caption>Table: W311b</caption>
+
+                    <caption class="neon">Table: W311b</caption>
+
                     <thead>
                         <tr>
-                            <th style="text-align: center;">Node_ID</th>
-                            <th style="text-align: center;">Location</th>
-                            <th style="text-align: center;">Temperature</th>
-                            <th style="text-align: center;">Hum</th>
-                            <th style="text-align: center;">Light</th>
-                            <th style="text-align: center;">Snd</th>
-                            <th style="text-align: center;">Date Created</th>
+                            <th>Node_ID</th> <th>Location</th> <th>Temperature</th> <th>Hum</th> <th>Light</th> <th>Snd</th> <th>Date Created</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {% for event in W311b %}
-                        <tr>
-                            <td style="text-align: center;"><strong>{{ event.node_id }}</strong></td>
-                            <td style="text-align: center;">{{ event.loc }}</td>
-                            <td style="text-align: center;">{{ event.temp }}</td>
-                            <td style="text-align: center;">{{ event.hum }}</td>
-                            <td style="text-align: center;">{{ event.light }}</td>
-                            <td style="text-align: center;">{{ event.snd }}</td>
-                            <td style="text-align: center;">{{ event.time }}</td>
-                        </tr>
+                            <tr>
+                                <td>{{ event.node_id }}</td>
+                                <td>{{ event.loc }}</td>
+                                <td>{{ event.temp }}</td>
+                                <td>{{ event.hum }}</td>
+                                <td>{{ event.light }}</td>
+                                <td>{{ event.snd }}</td>
+                                <td>{{ event.time }}</td>
+                            </tr>
                         {% endfor %}
                     </tbody>
+
                 </table>
 
                 <table id="W311d_Z1">
-                    <caption>Table: W311d_Z1</caption>
+
+                    <caption class="neon">Table: W311d_Z1</caption>
+
                     <thead>
                         <tr>
-                            <th style="text-align: center;">Node_ID</th>
-                            <th style="text-align: center;">Location</th>
-                            <th style="text-align: center;">Temperature</th>
-                            <th style="text-align: center;">Hum</th>
-                            <th style="text-align: center;">Light</th>
-                            <th style="text-align: center;">Snd</th>
-                            <th style="text-align: center;">Date Created</th>
+                            <th>Node_ID</th> <th>Location</th> <th>Temperature</th> <th>Hum</th> <th>Light</th> <th>Snd</th> <th>Date Created</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {% for event in W311d_Z1 %}
-                        <tr>
-                            <td style="text-align: center;"><strong>{{ event.node_id }}</strong></td>
-                            <td style="text-align: center;">{{ event.loc }}</td>
-                            <td style="text-align: center;">{{ event.temp }}</td>
-                            <td style="text-align: center;">{{ event.hum }}</td>
-                            <td style="text-align: center;">{{ event.light }}</td>
-                            <td style="text-align: center;">{{ event.snd }}</td>
-                            <td style="text-align: center;">{{ event.time }}</td>
-                        </tr>
+                            <tr>
+                                <td>{{ event.node_id }}</td>
+                                <td>{{ event.loc }}</td>
+                                <td>{{ event.temp }}</td>
+                                <td>{{ event.hum }}</td>
+                                <td>{{ event.light }}</td>
+                                <td>{{ event.snd }}</td>
+                                <td>{{ event.time }}</td>
+                            </tr>
                         {% endfor %}
                     </tbody>
+
                 </table>
 
                 <table id="W311d_Z2">
-                    <caption>Table: W311d_Z2</caption>
+
+                    <caption class="neon">Table: W311d_Z2</caption>
+
                     <thead>
                         <tr>
-                            <th style="text-align: center;">Node_ID</th>
-                            <th style="text-align: center;">Location</th>
-                            <th style="text-align: center;">Temperature</th>
-                            <th style="text-align: center;">Hum</th>
-                            <th style="text-align: center;">Light</th>
-                            <th style="text-align: center;">Snd</th>
-                            <th style="text-align: center;">Date Created</th>
+                            <th>Node_ID</th> <th>Location</th> <th>Temperature</th> <th>Hum</th> <th>Light</th> <th>Snd</th> <th>Date Created</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {% for event in W311d_Z2 %}
-                        <tr>
-                            <td style="text-align: center;"><strong>{{ event.node_id }}</strong></td>
-                            <td style="text-align: center;">{{ event.loc }}</td>
-                            <td style="text-align: center;">{{ event.temp }}</td>
-                            <td style="text-align: center;">{{ event.hum }}</td>
-                            <td style="text-align: center;">{{ event.light }}</td>
-                            <td style="text-align: center;">{{ event.snd }}</td>
-                            <td style="text-align: center;">{{ event.time }}</td>
-                        </tr>
+                            <tr>
+                                <td>{{ event.node_id }}</td>
+                                <td>{{ event.loc }}</td>
+                                <td>{{ event.temp }}</td>
+                                <td>{{ event.hum }}</td>
+                                <td>{{ event.light }}</td>
+                                <td>{{ event.snd }}</td>
+                                <td>{{ event.time }}</td>
+                            </tr>
                         {% endfor %}
                     </tbody>
+                    
                 </table>
 
                 <table id="mainTable">
-                    <caption>Table: Main</caption>
+
+                    <caption class="neon">Table: Main</caption>
+
                     <thead>
                         <tr>
-                            <th style="text-align: center;">Node_ID</th>
-                            <th style="text-align: center;">Location</th>
-                            <th style="text-align: center;">Temperature</th>
-                            <th style="text-align: center;">Hum</th>
-                            <th style="text-align: center;">Light</th>
-                            <th style="text-align: center;">Snd</th>
-                            <th style="text-align: center;">Date Created</th>
+                            <th>Node_ID</th> <th>Location</th> <th>Temperature</th> <th>Hum</th> <th>Light</th> <th>Snd</th> <th>Date Created</th>
                         </tr>
                     </thead>
-                    {% for event in events %}
-                    <tr>
-                        <td style="text-align: center;"><strong>{{ event.node_id }}</strong></td>
-                        <td style="text-align: center;">{{ event.loc }}</td>
-                        <td style="text-align: center;">{{ event.temp }}</td>
-                        <td style="text-align: center;">{{ event.hum }}</td>
-                        <td style="text-align: center;">{{ event.light }}</td>
-                        <td style="text-align: center;">{{ event.snd }}</td>
-                        <td style="text-align: center;">{{ event.time }}</td>
-                    </tr>
-                    {% endfor %}
+
+                    <tbody>
+                        {% for event in events %}
+                            <tr>
+                                <td>{{ event.node_id }}</td>
+                                <td>{{ event.loc }}</td>
+                                <td>{{ event.temp }}</td>
+                                <td>{{ event.hum }}</td>
+                                <td>{{ event.light }}</td>
+                                <td>{{ event.snd }}</td>
+                                <td>{{ event.time }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+
                 </table>
             </div>
 
@@ -254,29 +247,34 @@
             <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
             <script src="https://cdn.jsdelivr.net/gh/Kaiyuan-W/live2d-widget/live2d-widget-master/autoload.js"></script>
+
         </div>
         <script>
             function toggleTable(buttonId, tableId) {
+
               var toggleButton = document.getElementById(buttonId);
               var table = document.getElementById(tableId);
               var tables = document.getElementsByTagName('table');
-              for (var i = 0; i < tables.length - 1; i++) {
+
+              for (var i = 0; i < tables.length - 1; i++)
                 tables[i].style.display = 'none';
-              }
+              
               toggleButton.addEventListener('click', function() {
-                for (var i = 0; i < tables.length; i++) {
+
+                for (var i = 0; i < tables.length; i++)
                   tables[i].style.display = 'none';
-                }
+            
                 table.style.display = 'table';
               });
             }
-            toggleTable('W311_H1_Button', 'W311_H1');
-            toggleTable('W311_H2_Button', 'W311_H2');
-            toggleTable('W311_H3_Button', 'W311_H3');
-            toggleTable('W311a_Button', 'W311a');
-            toggleTable('W311b_Button', 'W311b');
-            toggleTable('W311d_Z1_Button', 'W311d_Z1');
-            toggleTable('W311d_Z2_Button', 'W311d_Z2');
-            toggleTable('Main_Button', 'mainTable');
+
+            var Buttoms = ['W311_H1_Button', 'W311_H2_Button', 'W311_H3_Button', 'W311a_Button',
+                           'W311b_Button', 'W311d_Z1_Button', 'W311d_Z2_Button', 'Main_Button']
+
+            var Loc = ['W311_H1', 'W311_H2', 'W311_H3', 'W311a', 'W311b', 'W311d_Z1', 'W311d_Z2', 'mainTable']
+
+            for(var i=0;i<=7;i++)
+                toggleTable(Buttoms[i], Loc[i])
+
         </script>
 </HTML>
