@@ -85,8 +85,9 @@
             var lines = [
                 '  Press i for InfoPort',
                 '  Press d for Dashboard',
-                '  Press u for Upload',
-                '  Press y for Genshin'
+                '  Press v for Venue Event',
+                '  Press y for Genshin',
+                '  Press a for Alert History'
             ];
             var lineIndex = 0;
             var charIndex = 0;
@@ -124,13 +125,17 @@
                     // 执行进入另一个节目的操作
                     enterAnotherProgram2();
                 }
-                if (key === 'u') {
+                if (key === 'v') {
                     // 执行进入另一个节目的操作
                     enterAnotherProgram3();
                 }
                 if (key === 'y') {
                     // 执行进入另一个节目的操作
                     enterAnotherProgram4();
+                }
+                if( key === 'a')
+                {
+                    enterAnotherProgram5();
                 }
             });
             function enterAnotherProgram1() {
@@ -151,6 +156,11 @@
             function enterAnotherProgram4() {
                 // 在这里编写进入另一个节目的逻辑
                 window.location.href = 'http://localhost:8000/';
+                // 可以在这里跳转到其他页面或执行其他操作
+            }
+            function enterAnotherProgram5() {
+                // 在这里编写进入另一个节目的逻辑
+                window.location.href = 'http://localhost:8000/iot/alert';
                 // 可以在这里跳转到其他页面或执行其他操作
             }
         </script>

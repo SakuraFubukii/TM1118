@@ -10,6 +10,7 @@ pip install openpyxl
 cd C:\
 django-env\Scripts\activate.bat   
 ```
+Uncomment ```#from . import iot_mqtt``` in iot/views.py
 ### 3. ~~Start Genshin Impact~~
 ```bash
 cd \www-genshin

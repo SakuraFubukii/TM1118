@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Event
+from .models import Alert
+#from . import iot_mqtt
 
 def index(request):
     events = Event.objects.all().order_by('-time')
@@ -20,3 +22,8 @@ def transfer(request):
 
 def welcome(request):
     return render(request, 'iot/welcome.html')
+
+def alert(request):
+    events = Alert.objects.all().order_by('-time')
+    context = {'events':events}
+    return render(request, 'iot/alert.html', context)

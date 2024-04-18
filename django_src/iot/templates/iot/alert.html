@@ -1,0 +1,53 @@
+<!doctype html>
+{% load static %}
+<HTML>
+    <head>
+        <title> Smart Campus </title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    </head>
+    <body style="background-color: #fcee09;">
+        <div class="container">
+            
+            <div class="header">
+                <h1 class="cyberpunk glitched">Alert History</h1>
+            </div>
+            <div id="tableContainer">
+                <table id="mainTable">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Alert ID</th>
+                            <th style="text-align: center;">Location</th>
+                            <th style="text-align: center;">Temperature</th>
+                            <th style="text-align: center;">Hum</th>
+                            <th style="text-align: center;">Light</th>
+                            <th style="text-align: center;">Snd</th>
+                            <th style="text-align: center;">Date Created</th>
+                        </tr>
+                    </thead>
+                    {% for event in events %}
+                    <tr>
+                        <td style="text-align: center;"><strong>{{ event.node_id }}</strong></td>
+                        <td style="text-align: center;">{{ event.loc }}</td>
+                        <td style="text-align: center;">{{ event.temp }}</td>
+                        <td style="text-align: center;">{{ event.hum }}</td>
+                        <td style="text-align: center;">{{ event.light }}</td>
+                        <td style="text-align: center;">{{ event.snd }}</td>
+                        <td style="text-align: center;">{{ event.time }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <br>
+            <br>
+            
+            <a href="http://localhost:8000/iot/transfer/">
+                <button>Go to transfer station</button>
+            </a>
+
+            <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+            <script src="https://cdn.jsdelivr.net/gh/Kaiyuan-W/live2d-widget/live2d-widget-master/autoload.js"></script>
+        </div>
+</HTML>
