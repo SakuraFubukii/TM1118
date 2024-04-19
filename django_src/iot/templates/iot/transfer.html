@@ -4,31 +4,6 @@
     <head>
         <title> Smart Campus </title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-        <script>
-            var idleTime = 0;
-            var idleTimeout = 10; // 设置超时时间为15秒
-    
-            // 检测用户活动
-            function resetTimer() {
-                idleTime = 0;
-            }
-    
-            // 检查用户活动时间
-            function checkIdleTime() {
-                idleTime++;
-                if (idleTime >= idleTimeout) {
-                    // 执行自动返回登录界面的操作，例如重定向到登录页面
-                    window.location.href = 'http://localhost:5173';
-                }
-            }
-    
-            // 监听用户活动事件
-            document.addEventListener('mousemove', resetTimer);
-            document.addEventListener('keydown', resetTimer);
-            document.addEventListener('mousedown', resetTimer);
-            document.addEventListener('touchstart', resetTimer);
-            setInterval(checkIdleTime, 1000); // 每秒检查一次用户活动时间
-        </script>
         <style>
             .rectangle {
                 position: fixed;
@@ -86,8 +61,8 @@
                 '  Press i for InfoPort',
                 '  Press d for Dashboard',
                 '  Press v for Venue Event',
-                '  Press y for Genshin',
-                '  Press a for Alert History'
+                '  Press a for Alert History',
+                '  Press l for Logout'
             ];
             var lineIndex = 0;
             var charIndex = 0;
@@ -129,7 +104,7 @@
                     // 执行进入另一个节目的操作
                     enterAnotherProgram3();
                 }
-                if (key === 'y') {
+                if (key === 'l') {
                     // 执行进入另一个节目的操作
                     enterAnotherProgram4();
                 }

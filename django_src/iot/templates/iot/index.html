@@ -3,11 +3,35 @@
 {% load static %}
 
 <HTML>
-
     <head>
         <title> Smart Campus </title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
         <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <script>
+            var idleTime = 0;
+            var idleTimeout = 15; // 设置超时时间为15秒
+    
+            // 检测用户活动
+            function resetTimer() {
+                idleTime = 0;
+            }
+    
+            // 检查用户活动时间
+            function checkIdleTime() {
+                idleTime++;
+                if (idleTime >= idleTimeout) {
+                    // 执行自动返回登录界面的操作，例如重定向到登录页面
+                    window.location.href = 'http://localhost:5173';
+                }
+            }
+    
+            // 监听用户活动事件
+            document.addEventListener('mousemove', resetTimer);
+            document.addEventListener('keydown', resetTimer);
+            document.addEventListener('mousedown', resetTimer);
+            document.addEventListener('touchstart', resetTimer);
+            setInterval(checkIdleTime, 1000); // 每秒检查一次用户活动时间
+        </script>
     </head>
 
     <body style="background-color: #fcee09;">
@@ -30,7 +54,7 @@
 
                 <table id="W311_H1">
 
-                    <caption class="neon">Table: W311_H1</caption>
+                    <caption>Table: W311_H1</caption>
 
                     <thead>
                         <tr>
@@ -56,7 +80,7 @@
 
                 <table id="W311_H2">
 
-                    <caption class="neon">Table: W311_H2</caption>
+                    <caption>Table: W311_H2</caption>
 
                     <thead>
                         <tr>
@@ -82,7 +106,7 @@
 
                 <table id="W311_H3">
 
-                    <caption class="neon">Table: W311_H3</caption>
+                    <caption>Table: W311_H3</caption>
 
                     <thead>
                         <tr>
@@ -108,7 +132,7 @@
 
                 <table id="W311a">
 
-                    <caption class="neon">Table: W311a</caption>
+                    <caption>Table: W311a</caption>
 
                     <thead>
                         <tr>
@@ -134,7 +158,7 @@
 
                 <table id="W311b">
 
-                    <caption class="neon">Table: W311b</caption>
+                    <caption>Table: W311b</caption>
 
                     <thead>
                         <tr>
@@ -160,7 +184,7 @@
 
                 <table id="W311d_Z1">
 
-                    <caption class="neon">Table: W311d_Z1</caption>
+                    <caption>Table: W311d_Z1</caption>
 
                     <thead>
                         <tr>
@@ -186,7 +210,7 @@
 
                 <table id="W311d_Z2">
 
-                    <caption class="neon">Table: W311d_Z2</caption>
+                    <caption>Table: W311d_Z2</caption>
 
                     <thead>
                         <tr>
@@ -212,7 +236,7 @@
 
                 <table id="mainTable">
 
-                    <caption class="neon">Table: Main</caption>
+                    <caption>Table: Main</caption>
 
                     <thead>
                         <tr>
